@@ -124,7 +124,7 @@ We can toggle boolean values:
 JSON.TOGGLE order $.shipped
 ```
 
-As you can see from these examples, working with JSON via the Redis CLI is efficient and intuitive once you are familar with commands and syntax.
+As you can see from these examples, working with JSON via the Redis CLI is efficient and intuitive once you are familiar with commands and syntax.
 
 ## Client libraries
 
@@ -135,29 +135,53 @@ For .NET developers:
 - https://github.com/redis/NRedisStack
 - https://github.com/redis/redis-om-dotnet
 
-## .NET example
+## .NET Examples
 
-https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-7.0&tabs=visual-studio-code
+In the example above we used the Redis CLI to execute RedisJSON commands. To see how we can leverage RedisJSON in applications, there are two examples provided in the following Github repository.
 
-Clone the following repository:
-
-```
-git clone <todo>
-```
+To get started, clone the following repository:
 
 ```
-cd todo-api-redis
+git clone https://github.com/Redislabs-Solution-Architects/redis-msft-labs.git
 ```
+
+Change your directory to the following:
+
+```
+cd redis-json-example
+```
+Now run this command:
 
 ```
 dotnet run
 ```
 
-Navigate to `https://localhost:7127/swagger/index.html`
+This is a simple console application to demonstrate how a JSON document can be created using .NET. In the example the NRedisStack package has been added to the project.
 
-1. ...
+Notice how the methods map to Redis CLI commands that were used earlier in the lab. 
 
-2. ...
+The second example is a simple web API. It's based on the example ['Todo API' from Microsoft](https://learn.microsoft.com/en-us/aspnet/core/tutorials/first-web-api?view=aspnetcore-7.0&tabs=visual-studio-code) but uses Redis and RedisJSON for persistance:
+
+```
+cd redis-api-example
+```
+
+This example shows how typical CRUD operations used by web services can be achieved using Redis OM.
+
+Redis OM provides high-level abstractions for using Redis in .NET, making it easy to model and query your Redis domain objects.
+
+To start the web service:
+
+```
+dotnet run
+```
+
+Now, navigate to 
+
+```
+https://localhost:7127/swagger/index.html
+````
+
 
 ## Additional Resources
 
