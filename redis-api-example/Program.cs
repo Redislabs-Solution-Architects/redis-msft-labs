@@ -1,5 +1,7 @@
 using Redis.OM;
 using TodoApi;
+using StackExchange.Redis;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +14,9 @@ builder.Services.AddSwaggerGen(c =>
 c.EnableAnnotations()
 );
 builder.Services.AddHostedService<IndexCreationService>();
-builder.Services.AddSingleton(new RedisConnectionProvider(builder.Configuration["REDIS_CONNECTION_STRING"]));
+ConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(builder.Configuration["REDIS_CONNECTION_STRING"]);
+
+builder.Services.AddSingleton(new RedisConnectionProvider(connectionMultiplexer));
 
 var app = builder.Build();
 
